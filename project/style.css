@@ -85,7 +85,7 @@ body {
 }
 
 .prato img {
-    width: 50%; /* Defina a largura desejada para todas as imagens */
+    width: 50%; 
     height: 100px;
     display: block;
     object-fit: auto;
