@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Formulário de Pedido</title>
+</head>
+<body>
+
+  <div id="pedido-formulario">
+    <h2>Escolha o que deseja pedir:</h2>
+    <button onclick="adicionarAoPedido('Pizza', 20)">Pizza - R$20</button>
+    <button onclick="adicionarAoPedido('Hambúrguer', 15)">Hambúrguer - R$15</button>
+    <button onclick="adicionarAoPedido('Salada', 10)">Salada - R$10</button>
+
+    <h3>Seu Pedido:</h3>
+    <ul id="lista-pedido"></ul>
+
+    <h3>Detalhes do Pedido:</h3>
+    <label for="endereco">Endereço:</label>
+    <input type="text" id="endereco" placeholder="Seu endereço">
+
+    <label for="metodo-pagamento">Método de Pagamento:</label>
+    <select id="metodo-pagamento">
+      <option value="cartao">Cartão de Crédito</option>
+      <option value="dinheiro">Dinheiro</option>
+    </select>
+
+    <label for="tipo-entrega">Tipo de Entrega:</label>
+    <input type="radio" id="retirada" name="tipo-entrega" value="retirada">
+    <label for="retirada">Retirada na Loja</label>
+    <input type="radio" id="delivery" name="tipo-entrega" value="delivery" checked>
+    <label for="delivery">Delivery</label>
+
+    <button onclick="enviarPedido()">Enviar Pedido para o WhatsApp</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
