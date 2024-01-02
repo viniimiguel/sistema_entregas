@@ -18,7 +18,7 @@ function exibirPedido() {
 function enviarPedido() {
   const mensagemPedido = gerarMensagemPedido();
   const linkWhatsApp = 'https://api.whatsapp.com/send?phone=5581989945697&text=' + encodeURIComponent(mensagemPedido);
-  
+
   window.location.href = linkWhatsApp;
 }
 
@@ -34,11 +34,25 @@ function gerarMensagemPedido() {
   const name = document.getElementById('Name').value;
   const metodoPagamento = document.getElementById('metodo-pagamento').value;
   const obs = document.getElementById('obs').value;
+  const bairro = document.getElementById('bairro').value;
+  const numero = document.getElementById('numero').value;
   mensagem += `Nome: ${name}\n`;
   mensagem += `Endereço: ${endereco}\n`;
-  mensagem += `Ponto de referncia: ${ptref}\n`;
+  mensagem += `Ponto de referência: ${ptref}\n`;
   mensagem += `Método de Pagamento: ${metodoPagamento}\n`;
+
+  if (metodoPagamento.toLowerCase() === 'dinheiro') {
+    // Pergunta sobre o troco apenas se o método de pagamento for em dinheiro
+    const precisaTroco = confirm('Você precisa de troco?');
+    if (precisaTroco) {
+      const valorTroco = prompt('Qual o valor do troco necessário?');
+      mensagem += `Troco Necessário: R$${valorTroco}\n`;
+    }
+  }
+
   mensagem += `Observação: ${obs}\n`;
+  mensagem += `Bairro: ${bairro}\n`;
+  mensagem += `Numero: ${numero}\n`;
 
   const tipoEntrega = document.querySelector('input[name="tipo-entrega"]:checked').value;
   mensagem += `Tipo de Entrega: ${tipoEntrega === 'retirada' ? 'Retirada na Loja' : 'Delivery'}`;
